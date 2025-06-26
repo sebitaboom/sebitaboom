@@ -12,4 +12,4 @@ No les puedo contar mucho, pero solo soy un entusiasta...
 
 # Estoy casado!!!!
 
-![Imagen]("C:/Users/sebas/Desktop/Funcional/Fotoo.jpg")
+![Imagen](C:/Users/sebas/Desktop/Funcional/Fotoo.jpg)
