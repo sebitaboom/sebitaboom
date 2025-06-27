@@ -11,6 +11,9 @@ COLOR_BG = (97, 14, 36)
 #Velocidad personaje
 VELOCIDAD = 4
 
+#Tamaño
+ESCALA_PERSONAJE = 0.2
+
 #Fps
 FPS = 60
 

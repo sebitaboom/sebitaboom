@@ -3,15 +3,27 @@ import parametros as p
 from time import sleep
 from personaje import Personaje
 
-
-jugador = Personaje(50, 50)
-
 pygame.init()
-
 ventana = pygame.display.set_mode((p.ANCHO, p.ALTO))
-
-
 pygame.display.set_caption("La derrota de sebitaboom")
+
+
+#Funcion escalar imagen
+def escalar_imagen(imagen: pygame.image, escala: int) -> pygame.image:
+    w = imagen.get_width()
+    h = imagen.get_height()
+    nueva_imagen = pygame.transform.scale(imagen, (w * escala, h * escala))
+    return nueva_imagen
+
+
+animaciones = []
+for i in range(1, 5):
+    imagenes = pygame.image.load(f"assets/images/character/images/Neko-Walk-{i}.png.png")
+    imagenes = escalar_imagen(imagenes, p.ESCALA_PERSONAJE)
+    animaciones.append(imagenes)
+
+
+jugador = Personaje(50, 50, animaciones)
 
 #Variables de movimientos del jugador
 mover_arriba = False
@@ -28,6 +40,9 @@ reloj = pygame.time.Clock()
 
 #Evento de todos los juego
 while run:
+    
+
+
     #Que vaya 60 fps 
     reloj.tick(p.FPS)
     
@@ -51,6 +66,8 @@ while run:
 
     #Mover jugador
     jugador.movimiento(delta_x, delta_y) 
+
+    jugador.update()
 
     jugador.dibujar(ventana)
     

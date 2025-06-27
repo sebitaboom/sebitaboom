@@ -7,6 +7,7 @@ No les puedo contar mucho, pero solo soy un entusiasta...
 # Mi proyectos
 + Juego: `En progreso...`
 + Pagina web: `No iniciado`
++ Latex: `En progeso...`
 
 
 
