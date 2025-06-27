@@ -19,7 +19,7 @@ class Personaje:
         self.image = animaciones[self.frame_index]
 
         #Forma del personaje
-        self.forma = pygame.Rect(0, 0, p.ALTO_PERSONAJE, p.ANCHO_PERSONAJE)
+        self.forma = self.image.get_rect()
         #Donde se va a encontrar
         self.forma.center = (x, y)
         
@@ -38,7 +38,7 @@ class Personaje:
         image_flip = pygame.transform.flip(self.image, self.flip, False)
 
         ventana.blit(image_flip, self.forma)
-        #pygame.draw.rect(ventana, p.MORADO_RARO, self.forma, width = 1)
+        #pygame.draw.rect(ventana, p.COLOR_PERSONAJE, self.forma, width = 1)
  
     def movimiento(self, delta_x: int, delta_y: int) -> None:
         if delta_x < 0:

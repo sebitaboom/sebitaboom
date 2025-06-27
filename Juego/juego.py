@@ -2,6 +2,7 @@ import pygame
 import parametros as p
 from time import sleep
 from personaje import Personaje
+from weapons import Weapon
 
 pygame.init()
 ventana = pygame.display.set_mode((p.ANCHO, p.ALTO))
@@ -15,15 +16,27 @@ def escalar_imagen(imagen: pygame.image, escala: int) -> pygame.image:
     nueva_imagen = pygame.transform.scale(imagen, (w * escala, h * escala))
     return nueva_imagen
 
+#Importar imagenes 
 
+
+
+#Personajes
 animaciones = []
 for i in range(1, 5):
-    imagenes = pygame.image.load(f"assets/images/character/images/Neko-Walk-{i}.png.png")
-    imagenes = escalar_imagen(imagenes, p.ESCALA_PERSONAJE)
-    animaciones.append(imagenes)
+    imagen_personaje = pygame.image.load(f"assets/images/character/images/Neko-Walk-{i}.png.png")
+    imagen_personaje = escalar_imagen(imagen_personaje, p.ESCALA_PERSONAJE)
+    animaciones.append(imagen_personaje)
+#Armas
+imagen_rifle = pygame.image.load("assets/images/weapons/Auto_Rifle-SciFi.png")
+imagen_rifle = escalar_imagen(imagen_rifle, p.ESCALA_ARMA)
 
 
+#Crea un jugador de la clase personaje
 jugador = Personaje(50, 50, animaciones)
+
+#Crea un arma de la clase Weapon
+rifle = Weapon(imagen_rifle)
+
 
 #Variables de movimientos del jugador
 mover_arriba = False
@@ -31,18 +44,17 @@ mover_abajo = False
 mover_derecha = False
 mover_izquierda = False
 
+#Reloj (Controla los frames per second)
+reloj = pygame.time.Clock()
+
 #Correo o no
 run = True
 
-#Reloj (Controla los frames per second)
-reloj = pygame.time.Clock()
+
 
 
 #Evento de todos los juego
 while run:
-    
-
-
     #Que vaya 60 fps 
     reloj.tick(p.FPS)
     
@@ -66,11 +78,18 @@ while run:
 
     #Mover jugador
     jugador.movimiento(delta_x, delta_y) 
-
+    #Actualizar el estado del jugador
     jugador.update()
 
+    #Actualizat el estado del arma
+    rifle.update(jugador)
+
+    #Dibujar el jugador
     jugador.dibujar(ventana)
-    
+
+    #Dibujar el arma
+    rifle.dibujar(ventana)
+
     for evento in pygame.event.get():
         #Cerrar el juego
         if evento.type == pygame.QUIT:
