@@ -14,4 +14,4 @@ No les puedo contar mucho, pero solo soy un entusiasta...
 
 # Estoy casado!!!!
 
-![Imagen local](./Pryectos/Esposa/Fotoo.jpg)
+![Imagen local](./Proyectos/Esposa/Fotoo.jpg)
