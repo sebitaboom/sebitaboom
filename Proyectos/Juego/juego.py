@@ -30,12 +30,21 @@ for i in range(1, 5):
 imagen_rifle = pygame.image.load("assets/images/weapons/Auto_Rifle-SciFi.png")
 imagen_rifle = escalar_imagen(imagen_rifle, p.ESCALA_ARMA)
 
+#Balas
+imagen_balas = pygame.image.load("assets/images/weapons/bullets_PNG35509.png")
+imagen_balas = escalar_imagen(imagen_balas, p.ESCALA_BALAS)
+
+
 
 #Crea un jugador de la clase personaje
 jugador = Personaje(50, 50, animaciones)
 
 #Crea un arma de la clase Weapon
-rifle = Weapon(imagen_rifle)
+rifle = Weapon(imagen_rifle, imagen_balas)
+
+
+#Grupo de sprites
+grupo_balas = pygame.sprite.Group()
 
 
 #Variables de movimientos del jugador
@@ -81,14 +90,27 @@ while run:
     #Actualizar el estado del jugador
     jugador.update()
 
-    #Actualizat el estado del arma
-    rifle.update(jugador)
+    #Actualiza el estado del arma
+    bala = rifle.update(jugador)
+    if bala:
+        grupo_balas.add(bala)
+
+    #Hace que la bala dispara  
+    for balas in grupo_balas:
+        balas.update()   
+    print(grupo_balas)
 
     #Dibujar el jugador
     jugador.dibujar(ventana)
 
     #Dibujar el arma
     rifle.dibujar(ventana)
+
+
+    #Dibujar balas
+    for bala in grupo_balas:
+        bala.dibujar(ventana)
+
 
     for evento in pygame.event.get():
         #Cerrar el juego

@@ -33,7 +33,7 @@ class Personaje:
         if self.frame_index >= len(self.animaciones):
             self.frame_index = 0
 
-    def dibujar(self, ventana) -> None:
+    def dibujar(self, ventana: pygame.display) -> None:
         #Voltea la imagen
         image_flip = pygame.transform.flip(self.image, self.flip, False)
 
