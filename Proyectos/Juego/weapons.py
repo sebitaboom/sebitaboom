@@ -3,6 +3,14 @@ import parametros as p
 from math import degrees, atan2
 from personaje import Personaje
 
+#Terminar
+def max_min(angulo: float, maximo: float, minimo: float) -> float:
+    if min(angulo, maximo) ==  maximo:
+        return maximo
+    elif max(angulo, minimo) == minimo:
+        return minimo
+    else:
+        return angulo
 
 class Weapon:
     def __init__(self, imagen_arma: pygame.image) -> None:
@@ -31,6 +39,8 @@ class Weapon:
         distancia_x = mouse_posicion[0] - self.forma.centerx
         distancia_y = -(mouse_posicion[1] - self.forma.centery)
         self.angulo = degrees(atan2(distancia_y, distancia_x))
+
+
 
         #DEFINIR MAX Y MIN (TAREA)
         print((self.angulo))
