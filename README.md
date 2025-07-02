@@ -8,7 +8,7 @@ No les puedo contar mucho, pero solo soy un entusiasta...
 + Juego: `En progreso...`
 + Pagina web: `No iniciado`
 + Latex: `En progeso...`
-+ Tarea de mi universodad: `No iniciado`
++ Tarea de mi universidad: `No iniciado`
 
 
 
